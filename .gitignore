@@ -1,0 +1,6 @@
+/*
+!/srcs
+!/srcs/*.s
+!.gitignore
+!README.md
+!Makefile
