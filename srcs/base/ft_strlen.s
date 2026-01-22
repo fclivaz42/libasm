@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/01/09 17:16:17 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/01/14 12:04:00 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/01/22 16:18:03 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -16,15 +16,15 @@ section .text
 ft_strlen:
 	push	rbp
 	mov		rbp, rsp
-	mov		r15, rdi
-	cmp		[r15], 0
+	mov		rbx, rdi
+	cmp 	BYTE [rbx], 0
 	je		.end
 .loop:
-	add		r15, 1
-	cmp		[r15], 0
+	inc		rbx
+	cmp 	BYTE [rbx], 0
 	jne		.loop
 .end:
-	sub		r15, rdi
-	mov		rax, r15
+	sub		rbx, rdi
+	mov		rax, rbx
 	leave
 	ret

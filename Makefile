@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/09 18:23:20 by fclivaz           #+#    #+#              #
-#    Updated: 2026/01/09 18:48:32 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2026/01/22 16:19:10 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ ${NAME}:	${DEPS}
 ${OBJDIR}/%.o:	${SUBDIR}/%.s | ${OBJDIR}
 				@printf "│\t > Compiling ${CYEL}$<${RSET} for ${CGRN}${NAME}${RSET}...\r"
 				@${COMP} ${FLAGS} $< -o $@
+				@strip --strip-unneeded $@
 				@printf "\33[2K"
 
 ${OBJDIR}:
