@@ -21,7 +21,7 @@ static	int loop_test(const int size)
 	bzero(buf, size + 1);
 	bzero(cmpbuf, size + 1);
 
-	fd = open("./the_unit.c", O_RDONLY);
+	fd = open("./Makefile", O_RDONLY);
 	if (fd < 0 + 1)
 	{
 		perror("FATAL open");
@@ -31,7 +31,7 @@ static	int loop_test(const int size)
 	bytes = read(fd, buf, size);
 	close(fd);
 
-	fd = open("./the_unit.c", O_RDONLY);
+	fd = open("./Makefile", O_RDONLY);
 	if (fd < 0)
 	{
 		perror("FATAL open");

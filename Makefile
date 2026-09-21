@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/09 18:23:20 by fclivaz           #+#    #+#              #
-#    Updated: 2026/01/22 16:19:10 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2026/09/21 23:46:31 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,6 +115,10 @@ re:
 		@printf "\n┌──────────\n│ Cleaning and ${CGRN}recompiling${RSET}...\n"
 		@${MAKE} fclean r
 		@${MAKE} all r
+
+test: all
+	@gcc tests/the_unit.c ./libasm.a -o tests/libasm_test
+	@tests/libasm_test
 
 .PHONY: all fclean clean re
 
