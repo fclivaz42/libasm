@@ -4,24 +4,11 @@
 
 size_t	ft_strlen(const char *str);
 
-size_t	lib_strlen(const char *s)
-{
-	size_t	x;
-
-	x = 0;
-	if (!s)
-		return (0);
-	while (s[x] != 0)
-		++x;
-	return (x);
-}
-
 static int	strlen_three(const char* str)
 {
-	size_t	len = 0, cmplen = 0, liblen = 0;
+	size_t	len = 0, cmplen = 0;
 	
 	len = strlen(str);
-	liblen = lib_strlen(str);
 	cmplen = ft_strlen(str);
 
 	if (len != cmplen)
@@ -32,7 +19,6 @@ static int	strlen_three(const char* str)
 	else
 	{
 		printf("strlen:\t\t%zu\n", len);
-		printf("lib_strlen:\t%zu\n", liblen);
 		printf("ft_strlen:\t%zu\n", cmplen);
 	}
 
