@@ -10,9 +10,9 @@
 ;                                                                              ;
 ; **************************************************************************** ;
 
-extern __errno_location
-global ft_write
-default rel
+extern	__errno_location
+global	ft_write
+default	rel
 
 section .data
 	sys_write dd	0x1
@@ -23,15 +23,15 @@ ft_write:
 	mov		rbp, rsp
 	mov		rax, [sys_write]
 	syscall
-	cmp rax, 0
-	jl .err
+	cmp		rax, 0
+	jl		.err
 	leave
 	ret
 .err:
-	neg rax
-	mov rdi, rax
-	call __errno_location WRT ..plt
-	mov [rax], rdi
-	mov rax, -1
+	neg		rax
+	mov		rdi, rax
+	call	__errno_location WRT ..plt
+	mov		[rax], rdi
+	mov		rax, -1
 	leave
 	ret

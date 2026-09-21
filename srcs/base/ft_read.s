@@ -10,9 +10,9 @@
 ;                                                                              ;
 ; **************************************************************************** ;
 
-extern __errno_location
-global ft_read
-default rel
+extern	__errno_location
+global	ft_read
+default	rel
 
 section .data
 	sys_read dd	0x0
@@ -23,15 +23,15 @@ ft_read:
 	mov		rbp, rsp
 	mov		rax, [sys_read]
 	syscall
-	cmp rax, 0
-	jl .err
+	cmp		rax, 0
+	jl		.err
 	leave
 	ret
 .err:
-	neg rax
-	mov rdi, rax
-	call __errno_location WRT ..plt
-	mov [rax], rdi
-	mov rax, -1
+	neg		rax
+	mov		rdi, rax
+	call	__errno_location WRT ..plt
+	mov		[rax], rdi
+	mov		rax, -1
 	leave
 	ret
