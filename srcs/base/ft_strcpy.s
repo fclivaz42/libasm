@@ -6,16 +6,28 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/01/09 18:52:17 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/01/14 12:13:58 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/09/22 00:57:29 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-section .text
-	global ft_strcpy
+global ft_strcpy
+default rel
 
+section .data
+
+section .text
 ft_strcpy:
 	push	rbp
 	mov		rbp, rsp
-
+	mov		rax, rdi
+.loop:
+	mov		bl, [rsi]
+	mov		[rdi], bl
+	test	bl, bl
+	jz		.end
+	add		rsi, 1
+	add		rdi, 1
+	jmp		.loop
+.end:
 	leave
 	ret

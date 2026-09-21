@@ -4,8 +4,8 @@
 #include "function_tests/strlen.c"
 #include "function_tests/read.c"
 #include "function_tests/write.c"
+#include "function_tests/strcpy.c"
 
-char	*ft_strcpy(char *restrict dst, const char *restrict src);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t n, size_t size);
@@ -18,11 +18,25 @@ int	main(void)
 	if (strlen_tests())
 		return 1;
 
+	errno = 0;
+
 	printf("\nBeginning tests for read:\n");
 	if (read_tests())
 		return 1;
 
+	errno = 0;
+
 	printf("\nBeginning tests for write:\n");
 	if (write_tests())
 		return 1;
+
+	errno = 0;
+
+	printf("\nBeginning tests for strcpy:\n");
+	if (strcpy_tests())
+		return 1;
+
+	errno = 0;
+
+	return 0;
 }
