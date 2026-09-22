@@ -5,9 +5,9 @@
 #include "function_tests/read.c"
 #include "function_tests/write.c"
 #include "function_tests/strcpy.c"
+#include "function_tests/strdup.c"
 
 int		ft_strcmp(const char *s1, const char *s2);
-char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t n, size_t size);
 
 int	main(void)
@@ -34,6 +34,12 @@ int	main(void)
 
 	printf("\nBeginning tests for strcpy:\n");
 	if (strcpy_tests())
+		return 1;
+
+	errno = 0;
+
+	printf("\nBeginning tests for strdup:\n");
+	if (strdup_tests())
 		return 1;
 
 	errno = 0;
