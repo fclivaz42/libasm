@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/09 18:23:20 by fclivaz           #+#    #+#              #
-#    Updated: 2026/09/22 03:35:16 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2026/09/22 04:08:46 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS	=	${SUBDIR}/base/ft_strlen.s \
 			${SUBDIR}/base/ft_strcpy.s \
 			${SUBDIR}/base/ft_strcmp.s \
 			${SUBDIR}/base/ft_strdup.s \
+			${SUBDIR}/base/ft_calloc.s \
 			${SUBDIR}/base/ft_write.s \
 			${SUBDIR}/base/ft_read.s
 
