@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/01/09 17:16:17 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/09/22 01:14:12 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/09/22 03:51:44 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -21,8 +21,8 @@ ft_strlen:
 	mov		rbp, rsp
 	mov		rax, rdi
 .loop:
-	mov		bl, [rax]
-	test	bl, bl
+	mov		cl, [rax]
+	test	cl, cl
 	jz		.end
 	add		rax, 1
 	jmp		.loop
