@@ -31,7 +31,7 @@ int	strlen_tests()
 	char	*huge = (char *)malloc(size);
 	char	mt[] = "";
 	char	str[] = "string!";
-	char	*heap = malloc(strlen(str));
+	char	*heap = malloc(strlen(str) + 1);
 
 	strcpy(heap, str);
 	if (!huge)
@@ -56,6 +56,7 @@ int	strlen_tests()
 		return 1;
 	
 	free(huge);
+	free(heap);
 
 	return 0;
 }

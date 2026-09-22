@@ -75,7 +75,7 @@ int write_tests()
 	char	*huge = (char *)malloc(size);
 	char	mt[] = "";
 	char	str[] = "string!";
-	char	*heap = malloc(strlen(str));
+	char	*heap = malloc(strlen(str) + 1);
 
 	strcpy(heap, str);
 	if (!huge)
@@ -102,6 +102,9 @@ int write_tests()
 	printf("----\nERRNO:\n----\n");
 	if (w_errno_test())
 		return 1;
+
+	free(heap);
+	free(huge);
 
 	return 0;
 }

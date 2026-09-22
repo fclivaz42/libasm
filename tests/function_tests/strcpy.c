@@ -54,6 +54,7 @@ static int	copies(char* dst, const char* src, size_t dstsize, char fillchar)
 
 	memset(dst, fillchar, dstsize + 1);
 
+	free(dstcmp);
 	return 0;
 }
 
