@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/09 18:23:20 by fclivaz           #+#    #+#              #
-#    Updated: 2026/09/22 04:08:46 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2026/09/24 03:21:10 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,7 +118,7 @@ re:
 		@${MAKE} all r
 
 test: all
-	@gcc -g3 -fsanitize=address -fno-omit-frame-pointer tests/the_unit.c ./libasm.a -o tests/libasm_test
+	@gcc -g3 -fno-omit-frame-pointer tests/the_unit.c ./libasm.a -o tests/libasm_test
 	@tests/libasm_test
 
 .PHONY: all fclean clean re

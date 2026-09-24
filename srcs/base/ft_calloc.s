@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/09/21 19:41:10 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/09/22 04:38:23 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/09/24 03:24:48 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -23,6 +23,7 @@ ft_calloc:
 	mov		rbp, rsp
 	mov		rax, rsi
 	mul		rdi
+	mov		rdi, rax
 	xor		rax, rax
 	test	rdx, rdx
 	jnz		.end
