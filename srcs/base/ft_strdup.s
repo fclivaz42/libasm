@@ -6,16 +6,16 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/01/09 18:52:41 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/09/22 03:55:31 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/09/24 03:27:35 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-extern malloc
-extern ft_strcpy
-extern ft_strlen
+extern	malloc
+extern	ft_strcpy
+extern	ft_strlen
 
-global ft_strdup
-default rel
+global	ft_strdup
+default	rel
 
 section .data
 

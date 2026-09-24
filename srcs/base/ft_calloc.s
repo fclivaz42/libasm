@@ -6,14 +6,14 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/09/21 19:41:10 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/09/24 03:24:48 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/09/24 03:27:01 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-extern malloc
+extern	malloc
 
-global ft_calloc
-default rel
+global	ft_calloc
+default	rel
 
 section .data
 

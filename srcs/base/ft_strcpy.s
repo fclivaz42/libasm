@@ -6,12 +6,12 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/01/09 18:52:17 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/09/22 03:52:05 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/09/24 03:27:25 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global ft_strcpy
-default rel
+global	ft_strcpy
+default	rel
 
 section .data
 

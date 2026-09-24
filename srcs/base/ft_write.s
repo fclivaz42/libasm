@@ -6,11 +6,12 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/01/09 18:53:32 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/09/21 16:54:49 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/09/24 03:28:03 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
 extern	__errno_location
+
 global	ft_write
 default	rel
 
