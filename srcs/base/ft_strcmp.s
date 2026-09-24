@@ -6,26 +6,32 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/01/09 18:50:45 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/01/22 16:19:37 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/09/24 03:10:12 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-section .text
-	global ft_strcmp
+global	ft_strcmp
+default	rel
 
+section .data
+
+section .text
 ft_strcmp:
 	push	rbp
 	mov		rbp, rsp
-	mov		r15, rdi
-	mov		r14, rsi
-	xor		eax, eax
+	xor		rax, rax
 .loop:
-	cmp		r15, r14
-	lahf
-	mov		al, ah
-	cmp		[r15], 0
-	cmp		[r14], 0
-	sahf
-	je		.loop
+	mov		cl, [rdi]
+	mov		dl, [rsi]
+	sub		cl, dl
+	movsx	rax, cl
+	test	rax, rax
+	jnz		.end
+	test	dl, dl
+	jz		.end
+	add		rdi, 1
+	add		rsi, 1
+	jmp		.loop
+.end:
 	leave
 	ret

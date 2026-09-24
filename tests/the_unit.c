@@ -6,9 +6,8 @@
 #include "function_tests/write.c"
 #include "function_tests/strcpy.c"
 #include "function_tests/strdup.c"
-
-int		ft_strcmp(const char *s1, const char *s2);
-void	*ft_calloc(size_t n, size_t size);
+#include "function_tests/calloc.c"
+#include "function_tests/strcmp.c"
 
 int	main(void)
 {
@@ -43,6 +42,16 @@ int	main(void)
 		return 1;
 
 	errno = 0;
+
+	printf("\nBeginning tests for calloc:\n");
+	if (calloc_tests())
+		return 1;
+
+	errno = 0;
+
+	printf("\nBeginning tests for strcmp:\n");
+	if (strcmp_tests())
+		return 1;
 
 	return 0;
 }
