@@ -54,6 +54,25 @@ int	strlen_tests()
 	printf("----\nHeap, normal string:\n----\n");
 	if (strlen_three(heap))
 		return 1;
+
+	printf("----\nStatic string:\n----\n");
+	{
+		size_t	len = 0, cmplen = 0;
+
+		len = strlen("");
+		cmplen = ft_strlen("");
+
+		if (len != cmplen)
+		{
+			printf("ERROR! lens are not the same: %zd, %zd\n", len, cmplen);
+			return 1;
+		}
+		else
+		{
+			printf("strlen:\t\t%zu\n", len);
+			printf("ft_strlen:\t%zu\n", cmplen);
+		}
+	}
 	
 	free(huge);
 	free(heap);

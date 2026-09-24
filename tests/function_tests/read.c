@@ -88,7 +88,7 @@ static int	r_errno_test()
 	else
 		printf("Bytes read match: %zd, %zd\n", bytes, cmpbytes);
 
-	if (bytes != cmpbytes)
+	if (err != cmperr)
 	{
 		printf("ERROR! Errno is not the same: %d, %d\n", err, cmperr);
 		return 1;

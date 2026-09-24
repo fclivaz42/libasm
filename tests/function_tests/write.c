@@ -36,7 +36,7 @@ static int	w_errno_test()
 	else
 		printf("Bytes written match: %zd, %zd\n", bytes, cmpbytes);
 
-	if (bytes != cmpbytes)
+	if (err != cmperr)
 	{
 		printf("ERROR! Errno is not the same: %d, %d\n", err, cmperr);
 		return 1;
