@@ -23,9 +23,7 @@ ft_strcmp:
 .loop:
 	mov		cl, [rdi]
 	mov		dl, [rsi]
-	sub		cl, dl
-	movsx	rax, cl
-	test	rax, rax
+	cmp		cl, dl
 	jnz		.end
 	test	dl, dl
 	jz		.end
@@ -33,5 +31,7 @@ ft_strcmp:
 	add		rsi, 1
 	jmp		.loop
 .end:
+	sub		cl, dl
+	movsx	rax, cl
 	leave
 	ret
