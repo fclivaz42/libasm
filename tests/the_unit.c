@@ -2,88 +2,46 @@
 #define CGRN "\033[1;32m"
 #define CYEL "\033[1;33m"
 #define RSET "\033[0m"
-#include <limits.h>
-#include <stddef.h>
-#include <sys/types.h>
-#include "function_tests/strlen.c"
-#include "function_tests/read.c"
-#include "function_tests/write.c"
-#include "function_tests/strcpy.c"
-#include "function_tests/strdup.c"
-#include "function_tests/calloc.c"
-#include "function_tests/strcmp.c"
+#include "function_tests/common/includes.h"
+
+static int printeroo(const char* name, int (*test)(void))
+{
+	errno = 0;
+	printf("\n----- %sTESTING%s %s()...\n", CYEL, RSET, name);
+	if (test())
+	{
+		printf("\n----- %sERROR%s: Failed tests for %s()!\n", CRED, RSET, name);
+		return 1;
+	}
+	printf("\n----- %sPASSED%s tests for %s()!\n", CGRN, RSET, name);
+	return 0;
+}
 
 int	main(void)
 {
 	printf("ASSEMBLY BLYAAAT!\n");
 
-	printf("\n----- %sTESTING%s ft_read()...\n", CYEL, RSET);
-	if (read_tests())
-	{
-		printf("\n----- %sERROR%s: Failed tests for ft_read()!\n", CRED, RSET);
+	if (printeroo("ft_read", read_tests))
 		return 1;
-	}
-	printf("\n----- %sPASSED%s tests for ft_read()!\n", CGRN, RSET);
 
-	errno = 0;
-
-	printf("\n----- %sTESTING%s ft_write()...\n", CYEL, RSET);
-	if (write_tests())
-	{
-		printf("\n----- %sERROR%s: Failed tests for write!\n", CRED, RSET);
+	if (printeroo("ft_write", write_tests))
 		return 1;
-	}
-	printf("\n----- %sPASSED%s tests for write!\n", CGRN, RSET);
 
-	errno = 0;
-
-	printf("\n----- %sTESTING%s ft_strlen()...\n", CYEL, RSET);
-	if (strlen_tests())
-	{
-		printf("\n----- %sERROR%s: Failed tests for ft_strlen!\n", CRED, RSET);
+	if (printeroo("ft_strlen", strlen_tests))
 		return 1;
-	}
-	printf("\n----- %sPASSED%s tests for ft_strlen!\n", CGRN, RSET);
 
-	errno = 0;
-
-	printf("\n----- %sTESTING%s ft_strcpy()...\n", CYEL, RSET);
-	if (strcpy_tests())
-	{
-		printf("\n----- %sERROR%s: Failed tests for ft_strcpy!\n", CRED, RSET);
+	if (printeroo("ft_strcpy", strcpy_tests))
 		return 1;
-	}
-	printf("\n----- %sPASSED%s tests for ft_strcpy!\n", CGRN, RSET);
 
-	errno = 0;
-
-	printf("\n----- %sTESTING%s ft_strcmp()...\n", CYEL, RSET);
-	if (strcmp_tests())
-	{
-		printf("\n----- %sERROR%s: Failed tests for ft_strcmp!\n", CRED, RSET);
+	if (printeroo("ft_strcmp", strcmp_tests))
 		return 1;
-	}
-	printf("\n----- %sPASSED%s tests for ft_strcmp!\n", CGRN, RSET);
 
-	errno = 0;
-
-	printf("\n----- %sTESTING%s ft_strdup()...\n", CYEL, RSET);
-	if (strdup_tests())
-	{
-		printf("\n----- %sERROR%s: Failed tests for ft_strdup!\n", CRED, RSET);
+	if (printeroo("ft_strdup", strdup_tests))
 		return 1;
-	}
-	printf("\n----- %sPASSED%s tests for ft_strdup!\n", CGRN, RSET);
 
-	errno = 0;
-
-	printf("\n----- %sTESTING%s ft_calloc()...\n", CYEL, RSET);
-	if (calloc_tests())
-	{
-		printf("\n----- %sERROR%s: Failed tests for ft_calloc()!\n", CRED, RSET);
+	if (printeroo("ft_calloc", calloc_tests))
 		return 1;
-	}
-	printf("\n----- %sPASSED%s tests for ft_calloc()!\n", CGRN, RSET);
 
+	printf("\n%sALL PASSED!%s\n", CGRN, CYEL);
 	return 0;
 }

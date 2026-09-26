@@ -1,61 +1,6 @@
-#include <stdio.h>
-#include <errno.h>
-#include <limits.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <strings.h>
-#include <sys/resource.h>
-#include <sys/wait.h>
+#include "common/includes.h"
 
 void	*ft_calloc(size_t n, size_t size);
-
-int calloc_limits()
-{
-	struct rlimit	set;
-	int				err, cmperr;
-	long			bytes = 1024 * 1024;
-
-	set.rlim_cur = bytes;
-	set.rlim_max = bytes;
-	if (setrlimit(RLIMIT_AS, &set) < 0)
-	{
-		perror("FATAL");
-		return 1;
-	}
-
-	printf("Testing OOM returns...\n");
-
-	char	*tfal = calloc(1024 * 1024, sizeof(int));
-	perror("Errno test ");
-	err = errno;
-
-	errno = 0;
-
-	char	*fail = ft_calloc(1024 * 1024, sizeof(int));
-	perror("Match above");
-	cmperr = errno;
-
-	if (fail)
-	{
-		printf("ERROR: Successfully allocated or returned when it shouldnt! %p\n", fail);
-		free(fail);
-		return 1;
-	}
-	if (err != cmperr)
-	{
-		printf("ERROR! Errno is not the same: %d, %d\n", err, cmperr);
-		return 1;
-	}
-	else
-		printf("Errno matches: %d, %d\n", err, cmperr);
-
-	if (tfal)
-		free (tfal);
-	if (fail)
-		free (fail);
-	return 0;
-}
 
 int	calloc_tests()
 {
@@ -97,7 +42,7 @@ int	calloc_tests()
 	int retstat;
 
 	if (pid == 0)
-		exit(calloc_limits());
+		exit(limits(CALLOC));
 
 	waitpid(pid, &retstat, 0);
 

@@ -1,13 +1,10 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "common/includes.h"
 
-size_t	ft_strlen(const char *str);
-
-static int	strlen_three(const char* str)
+static int	strlen_three(const char* str, const char* desc)
 {
 	size_t	len = 0, cmplen = 0;
 	
+	printf("----\n%s string:\n----\n", desc);
 	len = strlen(str);
 	cmplen = ft_strlen(str);
 
@@ -39,26 +36,22 @@ int	strlen_tests()
 	memset(huge, 'a', size);
 	huge[size - 1] = 0;
 
-	printf("----\nEmpty string:\n----\n");
-	if (strlen_three(mt))
+	if (strlen_three(mt, "Empty"))
 		return 1;
 
-	printf("----\nHUGE string:\n----\n");
-	if (strlen_three(huge))
+	if (strlen_three(huge, "Huge"))
 		return 1;
 
-	printf("----\nStack, normal string:\n----\n");
-	if (strlen_three(str))
+	if (strlen_three(str, "Stack, normal"))
 		return 1;
 
-	printf("----\nHeap, normal string:\n----\n");
-	if (strlen_three(heap))
+	if (strlen_three(heap, "Heap, normal"))
 		return 1;
 
-	printf("----\nStatic string:\n----\n");
 	{
 		size_t	len = 0, cmplen = 0;
 
+		printf("----\nStatic string:\n----\n");
 		len = strlen("");
 		cmplen = ft_strlen("");
 

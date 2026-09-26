@@ -1,11 +1,6 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
+#include "common/includes.h"
 
-char	*ft_strcpy(char *restrict dst, const char *restrict src);
-
-static int	copies(char* dst, const char* src, size_t dstsize, char fillchar)
+static int	copies(char* dst, const char* src, size_t dstsize, char fillchar, const char* desc)
 {
 	char	*ret, *cmpret;
 	char	*dstcmp = malloc(dstsize + 1);
@@ -13,6 +8,7 @@ static int	copies(char* dst, const char* src, size_t dstsize, char fillchar)
 
 	memcpy(dstcmp, dst, dstsize + 1);
 
+	printf("----\n%s copy:\n----\n", desc);
 	printf("strcpy:\t\t");
 	fflush(NULL);
 	ret = strcpy(dst, src);
@@ -71,20 +67,16 @@ int		strcpy_tests()
 	memset(stack_dest, 'A', 50);
 	huge_src[2000] = 0;
 
-	printf("----\nEmpty string:\n----\n");
-	if (copies(stack_dest, mt, 50, 'A'))
+	if (copies(stack_dest, mt, 50, 'A', "Empty string"))
 		return 1;
 
-	printf("----\nStack-based copy:\n----\n");
-	if (copies(stack_dest, small_source, 50, 'A'))
+	if (copies(stack_dest, small_source, 50, 'A', "Stack-based"))
 		return 1;
 
-	printf("----\nStack-to-Heap copy:\n----\n");
-	if (copies(bigg_dest, small_source, 200, 0))
+	if (copies(bigg_dest, small_source, 200, 0, "Stack-to-Heap"))
 		return 1;
 
-	printf("----\nHeap-to-Heap copy:\n----\n");
-	if (copies(huge_dest, huge_src, 2000, 0))
+	if (copies(huge_dest, huge_src, 2000, 0, "Heap-to-Heap"))
 		return 1;
 
 	free(huge_src);

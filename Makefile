@@ -6,11 +6,13 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/09 18:23:20 by fclivaz           #+#    #+#              #
-#    Updated: 2026/09/24 13:37:38 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2026/09/26 16:07:25 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
 export MAKEFLAGS += --silent
+
+include Maketests.mk
 
 NAME	= libasm.a
 
@@ -116,10 +118,6 @@ re:
 		@printf "\n┌──────────\n│ Cleaning and ${CGRN}recompiling${RSET}...\n"
 		@${MAKE} fclean r
 		@${MAKE} all r
-
-test: all
-	@gcc -g3 -fno-omit-frame-pointer tests/the_unit.c ./libasm.a -o tests/libasm_test
-	@tests/libasm_test
 
 .PHONY: all fclean clean re
 
