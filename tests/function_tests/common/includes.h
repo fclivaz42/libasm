@@ -25,6 +25,12 @@ enum rwmode
 	WRITE		= 1
 };
 
+typedef struct	s_list
+{
+	void			*data;
+	struct s_list	*next;
+}	t_list;
+
 #define SMALL 16
 #define NORMAL 1024
 #define HUGE 65536
@@ -39,14 +45,21 @@ char	*ft_strcpy(char *restrict dst, const char *restrict src);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *str);
 
-int limits(enum memmode md);
-int	rw_errno_test(enum rwmode rw);
+t_list*	ft_list_push_front(t_list **begin_list, void *data);
 
-int read_tests(void);
-int write_tests(void);
-int strlen_tests(void);
-int strcpy_tests(void);
-int strcmp_tests(void);
-int strdup_tests(void);
-int calloc_tests(void);
+int		limits(enum memmode md);
+int		rw_errno_test(enum rwmode rw);
 
+int		read_tests(void);
+int		write_tests(void);
+int		strlen_tests(void);
+int		strcpy_tests(void);
+int		strcmp_tests(void);
+int		strdup_tests(void);
+int		calloc_tests(void);
+int		list_push_front_tests(void);
+int		list_remove_if_tests(void);
+int		list_size_tests(void);
+int		list_sort_tests(void);
+int		simd_memchr_tests(void);
+int		atoi_base_tests(void);

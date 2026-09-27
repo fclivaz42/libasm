@@ -42,6 +42,13 @@ int	main(void)
 	if (printeroo("ft_calloc", calloc_tests))
 		return 1;
 
-	printf("\n%sALL PASSED!%s\n", CGRN, CYEL);
+	printf("\n%sALL BASIC TESTS PASSED!%s\n", CGRN, CYEL);
+
+	if (printeroo("ft_list_push_front", list_push_front_tests))
+		return 1;
+
+	// if (printeroo("ft_list_remove_if", list_remove_if_tests))
+	// 	return 1;
+
 	return 0;
 }

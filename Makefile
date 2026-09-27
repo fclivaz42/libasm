@@ -6,23 +6,27 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/09 18:23:20 by fclivaz           #+#    #+#              #
-#    Updated: 2026/09/26 16:07:25 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2026/09/26 21:39:48 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
 export MAKEFLAGS += --silent
 
-include Maketests.mk
-
 NAME	= libasm.a
 
 SHELL	= /bin/bash
 
-COMP = nasm
+COMP	= nasm
 
-DEPS	=	${SRCS}
+ifeq (${MAKECMDGOALS},bonus)
+	SRCS = ${BSRCS}
+else
+	SRCS = ${OSRCS}
+endif
 
-SRCS	=	${SUBDIR}/base/ft_strlen.s \
+DEPS = ${SRCS}
+
+OSRCS	=	${SUBDIR}/base/ft_strlen.s \
 			${SUBDIR}/base/ft_strcpy.s \
 			${SUBDIR}/base/ft_strcmp.s \
 			${SUBDIR}/base/ft_strdup.s \
@@ -30,23 +34,24 @@ SRCS	=	${SUBDIR}/base/ft_strlen.s \
 			${SUBDIR}/base/ft_write.s \
 			${SUBDIR}/base/ft_read.s
 
-BONUS	=	${SUBDIR}/base/ft_atoi_base.s \
-			${SUBDIR}/base/ft_list_push_front.s \
-			${SUBDIR}/base/ft_list_size.s \
-			${SUBDIR}/base/ft_list_sort.s \
-			${SUBDIR}/base/ft_list_remove_if.s
+BSRCS	=	${SUBDIR}/bonus/ft_atoi_base.s \
+			${SUBDIR}/bonus/ft_list_push_front.s \
+			${SUBDIR}/bonus/ft_list_size.s \
+			${SUBDIR}/bonus/ft_list_sort.s \
+			${SUBDIR}/bonus/ft_list_remove_if.s \
+			${OSRCS}
 
 SUBDIR	= srcs
 
-SRCTREE	= $(shell find srcs -type d)
+SRCTREE	= $(shell find ${SUBDIR} -type d)
 
 OBJ		= $(SRCS:${SUBDIR}/%.s=${OBJDIR}/%.o)
 
 OBJDIR	= obj
 
-OBJTREE	= $(SRCTREE:srcs%=${OBJDIR}%)
+OBJTREE	= $(SRCTREE:${SUBDIR}%=${OBJDIR}%)
 
-FLAGS= -f elf64
+FLAGS	= -f elf64
 
 CRED = \033[1;31m
 CGRN = \033[1;32m
@@ -54,6 +59,8 @@ CYEL = \033[1;33m
 RSET = \033[0m
 
 all:	${NAME}
+
+bonus:	${NAME}
 
 ${NAME}:	${DEPS}
 		@if [[ $(if $(filter r,${MAKECMDGOALS}),1,0) == "1" ]]; then \
@@ -77,7 +84,7 @@ ${OBJDIR}:
 		@printf "│\tCreating ${CYEL}${OBJTREE}${RSET} for ${CGRN}${NAME}${RSET}\n"
 		@mkdir -p ${OBJTREE}
 
-clean:
+clean: cleantest
 		@if [[ $(if $(filter r,${MAKECMDGOALS}),1,0) == "1" ]]; then \
 			printf "├──────────\n"; \
 		else \
@@ -98,7 +105,7 @@ clean:
 			rm -rf ${NAME}.dSYM; \
 		fi
 
-fclean: clean
+fclean: fcleantest clean
 		@if [ -e "./${NAME}" ]; then \
 			if [[ $(if $(filter r,${MAKECMDGOALS}),1,0) == "1" ]]; then \
 				printf "│\tRemoving ${CYEL}${NAME}${RSET}\n"; \
@@ -119,6 +126,8 @@ re:
 		@${MAKE} fclean r
 		@${MAKE} all r
 
-.PHONY: all fclean clean re
+.PHONY: all fclean clean re bonus test
+
+include Maketests.mk
 
 $(eval r:;@:)
