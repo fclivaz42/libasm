@@ -46,6 +46,7 @@ char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *str);
 
 void	ft_list_push_front(t_list **begin_list, void *data);
+uint	ft_list_size(t_list *begin_list);
 
 int		limits(enum memmode md);
 int		rw_errno_test(enum rwmode rw);

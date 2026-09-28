@@ -47,6 +47,9 @@ int	main(void)
 	if (printeroo("ft_list_push_front", list_push_front_tests))
 		return 1;
 
+	if (printeroo("ft_list_size", list_size_tests))
+		return 1;
+
 	// if (printeroo("ft_list_remove_if", list_remove_if_tests))
 	// 	return 1;
 
