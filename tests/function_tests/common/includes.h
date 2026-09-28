@@ -45,7 +45,7 @@ char	*ft_strcpy(char *restrict dst, const char *restrict src);
 char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *str);
 
-t_list*	ft_list_push_front(t_list **begin_list, void *data);
+void	ft_list_push_front(t_list **begin_list, void *data);
 
 int		limits(enum memmode md);
 int		rw_errno_test(enum rwmode rw);

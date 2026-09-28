@@ -1,8 +1,9 @@
 #include "common/includes.h"
+#include <sys/param.h>
 
 static int	cmpdiff(const char *s1, const char *s2)
 {
-	int res = strcmp(s1, s2);
+	int res = memcmp(s1, s2, MIN(strlen(s1), strlen(s2)) + 1);
 	int rescmp = ft_strcmp(s1, s2);
 
 	printf("Checking difference between '%s' and '%s'\n", s1, s2);

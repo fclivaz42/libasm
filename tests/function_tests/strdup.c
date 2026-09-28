@@ -54,6 +54,7 @@ int strdup_tests()
 	free(dup2);
 	free(dup3);
 	free(dup4);
+	free(huge);
 
 	int pid = fork();
 	int retstat;
@@ -65,8 +66,6 @@ int strdup_tests()
 
 	if (WEXITSTATUS(retstat))
 		return 1;
-
-	free(huge);
 
 	return 0;
 }
