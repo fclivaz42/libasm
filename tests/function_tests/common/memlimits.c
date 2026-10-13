@@ -70,3 +70,17 @@ int limits(enum memmode md)
 		free (test_fail);
 	return 0;
 }
+
+void free_list(t_list *lst)
+{
+	t_list	*next;
+
+	while (lst)
+	{
+		next = lst->next;
+		if (lst->data)
+			free(lst->data);
+		free(lst);
+		lst = next;
+	}
+}

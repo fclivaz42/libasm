@@ -47,9 +47,11 @@ size_t	ft_strlen(const char *str);
 
 void	ft_list_push_front(t_list **begin_list, void *data);
 uint	ft_list_size(t_list *begin_list);
+void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(void *, void *), void (*free_fct)(void *));
 
 int		limits(enum memmode md);
 int		rw_errno_test(enum rwmode rw);
+void	free_list(t_list *lst);
 
 int		read_tests(void);
 int		write_tests(void);

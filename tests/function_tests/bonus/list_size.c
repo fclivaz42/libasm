@@ -41,5 +41,9 @@ int	list_size_tests()
 	if (the_print(ft_list_size(NULL), 0))
 		return 1;
 
+	free_list(twelve);
+	free_list(four);
+	free_list(billion);
+
 	return 0;
 }

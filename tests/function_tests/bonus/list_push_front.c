@@ -1,6 +1,6 @@
 #include "../common/includes.h"
 
-static t_list	*gemerate_list(void *param1, void *param2, void *param3)
+static inline t_list	*gemerate_list(void *param1, void *param2, void *param3)
 {
 
 	t_list	*list = calloc(1, sizeof(t_list));
@@ -16,7 +16,7 @@ static t_list	*gemerate_list(void *param1, void *param2, void *param3)
 	return list;
 }
 
-static t_list	*generate_test(void *param1, void *param2, void *param3)
+static inline t_list	*generate_test(void *param1, void *param2, void *param3)
 {
 	t_list	*lst = NULL;
 	ft_list_push_front(&lst, param3);
@@ -25,23 +25,13 @@ static t_list	*generate_test(void *param1, void *param2, void *param3)
 	return lst;
 }
 
-static inline void	free_list(t_list *lst)
-{
-	free(lst->next->next->data);
-	free(lst->next->next);
-	free(lst->next->data);
-	free(lst->next);
-	free(lst);
-}
-
 int list_push_front_tests()
 {
 	static char	*stc = "static string omg";
-	char	*mlc = malloc(strlen(stc));
-	int		*nbr = malloc(sizeof(int)), *cnbr = malloc(sizeof(int));
-	double	*flt = malloc(sizeof(double)), *cflt = malloc(sizeof(double));
+	char		*mlc = strdup(stc);
+	int			*nbr = malloc(sizeof(int)), *cnbr = malloc(sizeof(int));
+	double		*flt = malloc(sizeof(double)), *cflt = malloc(sizeof(double));
 
-	strcpy(mlc, stc);
 	*nbr = 1337;
 	*flt = 1337.69696969;
 	*cnbr = 1337;
@@ -83,8 +73,10 @@ int list_push_front_tests()
 	else
 		printf("doubles match: %p - %p; %f - %f\n", check->data, cmp->data, *(double *)check->data, *(double *)cmp->data);
 
-	free_list(lst_check);
-	free_list(lst_cmp);
+	free_list(lst_check->next);
+	free_list(lst_cmp->next);
+	free(lst_check);
+	free(lst_cmp);
 	free(mlc);
 
 	return 0;
