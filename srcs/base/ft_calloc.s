@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/09/21 19:41:10 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/09/24 03:27:01 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/13 20:32:00 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -19,15 +19,12 @@ section .data
 
 section .text
 ft_calloc:
-	push	rbp
-	mov		rbp, rsp
 	mov		rax, rsi
 	mul		rdi
 	mov		rdi, rax
 	xor		rax, rax
 	test	rdx, rdx
 	jnz		.end
-	sub		rsp, 8
 	push	rdi
 
 	call	malloc WRT ..plt
@@ -42,5 +39,4 @@ ft_calloc:
 	cmp		rcx, rdi
 	jl		.loop
 .end:
-	leave
 	ret

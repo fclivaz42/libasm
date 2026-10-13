@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/01/09 18:52:17 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/09/24 03:27:25 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/13 20:32:36 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -17,8 +17,6 @@ section .data
 
 section .text
 ft_strcpy:
-	push	rbp
-	mov		rbp, rsp
 	mov		rax, rdi
 .loop:
 	mov		cl, [rsi]
@@ -29,5 +27,4 @@ ft_strcpy:
 	add		rdi, 1
 	jmp		.loop
 .end:
-	leave
 	ret

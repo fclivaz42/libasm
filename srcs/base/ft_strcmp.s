@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/01/09 18:50:45 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/09/24 03:10:12 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/13 20:32:28 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -17,8 +17,6 @@ section .data
 
 section .text
 ft_strcmp:
-	push	rbp
-	mov		rbp, rsp
 	xor		rax, rax
 .loop:
 	mov		cl, [rdi]
@@ -33,5 +31,4 @@ ft_strcmp:
 .end:
 	sub		cl, dl
 	movsx	rax, cl
-	leave
 	ret

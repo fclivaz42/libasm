@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/01/09 18:53:32 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/09/24 03:28:03 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/13 20:32:59 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -20,13 +20,10 @@ section .data
 
 section .text
 ft_write:
-	push	rbp
-	mov		rbp, rsp
 	mov		rax, [sys_write]
 	syscall
 	cmp		rax, 0
 	jl		.err
-	leave
 	ret
 .err:
 	neg		rax
@@ -34,5 +31,4 @@ ft_write:
 	call	__errno_location WRT ..plt
 	mov		[rax], rdi
 	mov		rax, -1
-	leave
 	ret

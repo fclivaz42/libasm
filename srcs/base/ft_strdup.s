@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/01/09 18:52:41 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/09/24 03:27:35 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/13 20:32:44 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -21,9 +21,6 @@ section .data
 
 section .text
 ft_strdup:
-	push	rbp
-	mov		rbp, rsp
-	sub		rsp, 8
 	push	rdi
 
 	call	ft_strlen WRT ..plt
@@ -38,5 +35,4 @@ ft_strdup:
 	mov		rdi, rax
 	call	ft_strcpy WRT ..plt
 .end:
-	leave
 	ret

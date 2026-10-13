@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/09/26 21:40:56 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/09/28 03:35:12 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/13 20:39:04 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -17,9 +17,7 @@ section .data
 
 section .text
 ft_list_size:
-	push	rbp
-	mov		rbp, rsp
-	mov		rax, 0
+	xor		rax, rax
 	test	rdi, rdi
 	jz		.end
 .loop:
@@ -29,5 +27,4 @@ ft_list_size:
 	jz		.end
 	jmp		.loop
 .end:
-	leave
 	ret

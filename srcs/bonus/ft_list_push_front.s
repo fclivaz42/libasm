@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/09/26 20:25:45 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/09/28 02:09:50 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/13 20:42:45 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -20,14 +20,13 @@ section .data
 
 section .text
 ft_list_push_front:
-	push	rbp
-	mov		rbp, rsp
-	sub		rsp, 8
 	push	rdi
 	push	rsi
 
 	mov		rdi, [lsize]
+	sub		rsp, 8
 	call	malloc WRT ..plt
+	add		rsp, 8
 	test	rax, rax
 	jz		.end
 
@@ -39,5 +38,4 @@ ft_list_push_front:
 	mov		[rcx], rax
 
 .end:
-	leave
 	ret
