@@ -53,5 +53,8 @@ int	main(void)
 	if (printeroo("ft_list_remove_if", list_remove_if_tests))
 		return 1;
 
+	if (printeroo("ft_atoi_base", atoi_base_tests))
+		return 1;
+
 	return 0;
 }
