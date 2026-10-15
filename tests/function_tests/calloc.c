@@ -32,9 +32,8 @@ int	calloc_tests()
 		return 1;
 	}
 	else
-	{
 		printf("If you can read this, you did not segfault meaning all is good. Yippie!\n");
-	}
+
 	free(smol);
 	free(larg);
 

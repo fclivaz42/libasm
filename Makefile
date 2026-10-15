@@ -6,7 +6,7 @@
 #    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/09 18:23:20 by fclivaz           #+#    #+#              #
-#    Updated: 2026/09/26 21:39:48 by fclivaz          ###   LAUSANNE.ch        #
+#    Updated: 2026/10/15 18:15:24 by fclivaz          ###   LAUSANNE.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ OSRCS	=	${SUBDIR}/base/ft_strlen.s \
 			${SUBDIR}/base/ft_read.s
 
 BSRCS	=	${SUBDIR}/bonus/ft_atoi_base.s \
+			${SUBDIR}/bonus/ft_simd_memchr.s \
 			${SUBDIR}/bonus/ft_list_push_front.s \
 			${SUBDIR}/bonus/ft_list_size.s \
 			${SUBDIR}/bonus/ft_list_sort.s \
