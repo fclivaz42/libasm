@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/01/09 18:50:36 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/10/16 22:40:33 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/17 19:03:10 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -25,7 +25,7 @@ section .text
 ; RDX: amount of bytes to read
 ; RAX: amount of bytes actually read
 ft_read:
-	mov		rax, [sys_read]				; move the system call in rax
+	mov		eax, [sys_read]				; move the system call in rax
 	syscall								; guess what
 	cmp		rax, 0						; compare read amount of bytes against 0
 	jl		.err						; jump to .err if read returns a negative number

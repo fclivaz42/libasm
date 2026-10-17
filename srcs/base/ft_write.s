@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/01/09 18:53:32 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/10/17 02:52:53 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/17 19:03:17 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -25,7 +25,7 @@ section .text
 ; RDX: amount of bytes to write
 ; RAX: amount of bytes actually written
 ft_write:
-	mov		rax, [sys_write]				; move the system call in rax
+	mov		eax, [sys_write]			; move the system call in rax
 	syscall								; guess what
 	cmp		rax, 0						; compare read amount of bytes against 0
 	jl		.err						; jump to .err if read returns a negative number
