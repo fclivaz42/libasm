@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/09/26 21:40:29 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/10/13 23:16:23 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/23 19:34:43 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -22,18 +22,17 @@ ft_list_remove_if:
 	push	r15
 	push	rbx
 	sub		rsp, 32
-	mov		[rsp + 16], rcx	; void (*free_fct)(void *)
-	mov		[rsp + 8], rdx	; int (*cmp)(void *, void *)
-	mov		[rsp], rsi		; void *data_ref
-	mov		r15, rdi		; t_list **begin_list
-	mov		rbx, [r15]		; dereference r15 to get t_list* into rbx
+	mov		[rsp + 16], rcx		; void (*free_fct)(void *)
+	mov		[rsp + 8], rdx		; int (*cmp)(void *, void *)
+	mov		[rsp], rsi			; void *data_ref
+	mov		r15, rdi			; t_list **begin_list
+	mov		rbx, [r15]			; dereference r15 to get t_list* into rbx
 
-	mov		rax, [rbx + 8]	; check t_list->next
-	test	rax, rax		; test if NULL
-	jz		.process		; process if it is, recursive call if not
-	lea		rdi, [rbx + 8]	; pass the reference to t_list->next as parameter
-	lea		rax, [ft_list_remove_if]	; load function
-	call	rax							; away it goes!
+	mov		rax, [rbx + 8]		; check t_list->next
+	test	rax, rax			; test if NULL
+	jz		.process			; process if it is, recursive call if not
+	lea		rdi, [rbx + 8]		; pass the reference to t_list->next as parameter
+	call	ft_list_remove_if	; recursive call
 
 .process:
 	mov		rdi, [rbx]		; move t_ist->data into 1st argument

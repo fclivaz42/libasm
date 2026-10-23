@@ -6,11 +6,11 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/01/09 18:52:17 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/10/17 03:10:51 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/23 15:46:33 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-extern ft_strlen
+extern	ft_strlen
 
 global	ft_strcpy
 default	rel

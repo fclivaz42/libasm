@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/09/26 21:40:56 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/10/13 20:39:04 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/17 03:04:57 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -21,7 +21,7 @@ ft_list_size:
 	test	rdi, rdi
 	jz		.end
 .loop:
-	add		rax, 1
+	inc		rax
 	mov		rdi, [rdi + 8]
 	test	rdi, rdi
 	jz		.end

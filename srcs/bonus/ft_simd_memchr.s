@@ -6,12 +6,12 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/09/21 19:41:08 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/10/17 19:53:38 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/23 15:46:02 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global ft_simd_memchr
-default rel
+global	ft_simd_memchr
+default	rel
 
 section .data
 	avx_reg_size dq	0x20		; AVX register size
