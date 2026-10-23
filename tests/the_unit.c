@@ -44,6 +44,12 @@ int	main(void)
 
 	printf("\n%sALL BASIC TESTS PASSED!%s\n", CGRN, CYEL);
 
+	if (printeroo("ft_simd_memchr", simd_memchr_tests))
+		return 1;
+
+	if (printeroo("ft_atoi_base", atoi_base_tests))
+		return 1;
+
 	if (printeroo("ft_list_push_front", list_push_front_tests))
 		return 1;
 
@@ -51,12 +57,6 @@ int	main(void)
 		return 1;
 
 	if (printeroo("ft_list_remove_if", list_remove_if_tests))
-		return 1;
-
-	if (printeroo("ft_simd_memchr", simd_memchr_tests))
-		return 1;
-
-	if (printeroo("ft_atoi_base", atoi_base_tests))
 		return 1;
 
 	return 0;

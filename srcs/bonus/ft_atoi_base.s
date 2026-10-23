@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/09/26 21:40:05 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/10/23 18:47:28 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/23 21:05:24 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -129,7 +129,7 @@ ft_atoi_base:
 	imul	r15
 
 .end:
+	add		rsp, 32
 	pop		r15
 	pop		rbx
-	add		rsp, 32
 	ret
