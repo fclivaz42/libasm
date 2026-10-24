@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/09/21 19:41:08 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/10/23 15:46:02 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/10/24 17:47:24 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -27,7 +27,8 @@ ft_simd_memchr:
 	test			rdx, rdx			; check if given size is zero
 	jz				.end				; ...why should we run if it is?
 	xor				r9, r9				; clear r9, which will be our accumulator
-	vpbroadcastb	ymm2, sil			; broadcast to ymm2 the char we are looking for
+	vmovd			xmm2, esi			; move the char we are looking for to xmm2
+	vpbroadcastb	ymm2, xmm2			; broadcast it to the rest of the ymm2 register
 	cmp				rdx, [avx_reg_size]	; compare if the given size >= 32
 	jae				.full				; jump to 32-byte wide calculation if it is
 	jmp				.tail				; jump to tail call if it is not
