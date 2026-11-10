@@ -59,5 +59,10 @@ int	main(void)
 	if (printeroo("ft_list_remove_if", list_remove_if_tests))
 		return 1;
 
+	if (printeroo("ft_list_sort", list_sort_tests))
+		return 1;
+
+	printf("\n%sALL BONUS TESTS PASSED!%s\n", CGRN, CYEL);
+
 	return 0;
 }

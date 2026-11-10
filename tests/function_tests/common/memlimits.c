@@ -84,3 +84,18 @@ void free_list(t_list *lst)
 		lst = next;
 	}
 }
+
+t_list	*generate_list(long seed)
+{
+	t_list	*head = NULL;
+	srand(seed);
+
+	for (int i = 10; i > 0; i--)
+	{
+		int *data = malloc(1 * sizeof(int));
+		*data = (rand() % 1500) - 500;
+		ft_list_push_front(&head, data);
+	}
+
+	return head;
+}

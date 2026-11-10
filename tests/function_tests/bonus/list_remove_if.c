@@ -1,6 +1,5 @@
 #include "../common/includes.h"
 
-
 static void	c_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(void *, void *), void (*free_fct)(void *))
 {
 	t_list			*curr = *begin_list;
@@ -28,20 +27,6 @@ static int mod_2(void *d1, void *d2)
 static int not_mod_2(void *d1, void *d2)
 {
 	return !(*(int *)d1 % *(int *)d2);
-}
-
-static inline t_list	*generate_list(void)
-{
-	t_list	*head = NULL;
-
-	for (int i = 10; i > 0; i--)
-	{
-		int *data = malloc(1 * sizeof(int));
-		*data = i;
-		ft_list_push_front(&head, data);
-	}
-
-	return head;
 }
 
 static inline int loop_de_loop(t_list *lst, t_list *tst)
@@ -80,10 +65,12 @@ static int	equals(void *d1, void *d2)
 int list_remove_if_tests()
 {
 	int		ret_code = 0;
-	t_list	*lst_odd = generate_list();
-	t_list	*lst_even = generate_list();
-	t_list	*tst_odd = generate_list();
-	t_list	*tst_even = generate_list();
+	struct timeval f;
+	gettimeofday(&f, NULL);
+	t_list	*lst_odd = generate_list(f.tv_usec);
+	t_list	*lst_even = generate_list(f.tv_usec);
+	t_list	*tst_odd = generate_list(f.tv_usec);
+	t_list	*tst_even = generate_list(f.tv_usec);
 
 	int		data_ref = 2;
 

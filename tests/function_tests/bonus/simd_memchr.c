@@ -1,6 +1,6 @@
 #include "../common/includes.h"
 
-int chr_test(const char *str, int find, size_t size)
+static int chr_test(const char *str, int find, size_t size)
 {
 	void	*res;
 	void	*tst;
