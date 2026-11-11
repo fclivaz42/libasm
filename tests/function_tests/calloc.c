@@ -21,13 +21,13 @@ int	calloc_tests()
 
 	printf("Checking for correctly sized allocations...\n");
 
-	memset_explicit(smol, 'a', (size1 * sizeof(char)) - 1);
-	memset_explicit(larg, 'b', (size2 * sizeof(double)) - 1);
+	memset_explicit(smol, 'a', size1 * sizeof(char));
+	memset_explicit(larg, 'b', size2 * sizeof(double));
 
 	write(1, smol, size1 * sizeof(char));
 	printf("\n");
 
-	if (strlen(smol) != (size1 - 1) || strlen(larg) != ((size2 * sizeof(double)) - 1))
+	if (strlen(smol) != size1 || strlen(larg) != (size2 * sizeof(double)))
 	{
 		printf("ERROR: Somehow memset correctly but sizes do not match!\n");
 		return 1;

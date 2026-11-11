@@ -6,7 +6,7 @@
 ;    By: fclivaz <fclivaz@student.42lausanne.ch>    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2026/09/21 19:41:10 by fclivaz           #+#    #+#              ;
-;    Updated: 2026/10/17 03:01:04 by fclivaz          ###   LAUSANNE.ch        ;
+;    Updated: 2026/11/11 16:53:59 by fclivaz          ###   LAUSANNE.ch        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -37,8 +37,19 @@ ft_calloc:
 	pop		rcx					; pre-pop rcx to make sure we are aligned
 	jz		.end				; get the hell away if rax is NULL
 
-	pop		rsi					; get rid of useless push
-	push	rax					; save rax for the end
+	mov		[rsp], rax			; replace last push by rax
+	cmp		rcx, 128			; check if buffer is bigger than 128 bytes
+	jae		.stosb				; use rep movsb if it's the case
+
+	xor		rsi, rsi			; clear rsi which will be used as accumulator
+
+.loop:
+	mov		[rax + rsi], 0		; zero current byte
+	inc		rsi					; increment counter
+	cmp		rsi, rcx			; check if we cleared the whole buffer
+	jl		.loop				; restart if we did not
+
+.stosb:							; uses rep stosb which is faster on large strings
 	mov		rdi, rax			; prepare rdi
 	xor		al, al				; clear al (again)
 	rep		stosb				; repeat store string byte rcx times
